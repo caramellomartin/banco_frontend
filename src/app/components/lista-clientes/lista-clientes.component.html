@@ -1,0 +1,28 @@
+<h2 class="text-center m-4">Lista Clientes</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr class="text-center">
+            <th>Id</th>
+            <th>Usuario</th>
+            <th>Password</th>
+            <th>Correo</th>
+            <th>Saldo</th>
+            <th>Id Gestor Asignado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of clientes" class="text-center">
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.usuario}}</td>
+            <td>{{cliente.password}}</td>
+            <td>{{cliente.correo}}</td>
+            <td>{{cliente.saldo}}</td>
+            <td>{{cliente.gestor.id}}</td>
+            <td>
+                <button (click)="actualizarCliente(cliente.id)" class="btn btn-info">Editar</button>
+                <button (click)="eliminarCliente(cliente.id)" class="btn btn-danger ml-2">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

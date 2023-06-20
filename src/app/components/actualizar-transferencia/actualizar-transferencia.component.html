@@ -1,0 +1,84 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center m-4">Actualizar Transferencia</h3>
+    <form (ngSubmit)="onSubmit()" #transferenciaForm = "ngForm">
+        <div class="form-group">
+            <label for="ordenante">Id Ordenante: </label>
+            <input 
+                type="number"
+                class="form-control"
+                id="ordenante"
+                [(ngModel)] = "transferencia.ordenante.id"
+                name="ordenante"
+                required
+                placeholder="Escriba el Id del Cliente ordenante"
+                #ordenante = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="ordenante.invalid && (ordenante.dirty || ordenante.touched)">
+                <div *ngIf="ordenante.errors['required']">
+                    Escriba un Id de Cliente por favor
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="beneficiario">Id Beneficiario: </label>
+            <input 
+                type="number"
+                class="form-control"
+                id="beneficiario"
+                [(ngModel)] = "transferencia.beneficiario.id"
+                name="beneficiario"
+                required
+                placeholder="Escriba el Id del Cliente beneficiario"
+                #beneficiario = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="beneficiario.invalid && (beneficiario.dirty || beneficiario.touched)">
+                <div *ngIf="beneficiario.errors['required']">
+                    Escriba un Id de Cliente por favor
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="concepto">Concepto: </label>
+            <input 
+                type="text"
+                class="form-control"
+                id="concepto"
+                [(ngModel)] = "transferencia.concepto"
+                name="concepto"
+                required
+                minlength="3"
+                placeholder="Escriba el concepto de la transferencia"
+                #concepto = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="concepto.invalid && (concepto.dirty || concepto.touched)">
+                <div *ngIf="concepto.errors['required']">
+                    Escriba un concepto por favor
+                </div>
+                <div *ngIf="concepto.errors['minlength']">
+                    Escriba un texto con al menos 3 caracteres.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="importe">Importe: </label>
+            <input 
+                type="number"
+                class="form-control"
+                id="importe"
+                [(ngModel)] = "transferencia.importe"
+                name="importe"
+                required
+                placeholder="Importe a transferir"
+                #importe = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="importe.invalid && (importe.dirty || importe.touched)">
+                <div *ngIf="importe.errors['required']">
+                    Proporcione el importe
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success" [disabled]="!transferenciaForm.form.valid">Guardar</button>
+        </div>
+    </form>
+</div>

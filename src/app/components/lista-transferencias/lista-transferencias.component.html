@@ -1,0 +1,28 @@
+<h2 class="text-center m-4">Lista de Transferencias</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr class="text-center">
+            <th>Id</th>
+            <th>Id Ordenante</th>
+            <th>Id Beneficiario</th>
+            <th>Concepto</th>
+            <th>Importe</th>
+            <th>Fecha</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transferencia of transferencias" class="text-center">
+            <td>{{transferencia.id}}</td>
+            <td>{{transferencia.ordenante.id}}</td>
+            <td>{{transferencia.beneficiario.id}}</td>
+            <td>{{transferencia.concepto}}</td>
+            <td>{{transferencia.importe}}</td>
+            <td>{{transferencia.fecha}}</td>
+            <td>
+                <button (click)="actualizarTransferencia(transferencia.id)" class="btn btn-info">Editar</button>
+                <button (click)="eliminarTransferencia(transferencia.id)" class="btn btn-danger ml-2">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

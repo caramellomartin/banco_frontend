@@ -1,0 +1,76 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center m-4">Nuevo Gestor</h3>
+    <form (ngSubmit)="onSubmit()" #gestorForm = "ngForm">
+        <div class="form-group">
+            <label for="usuario">Usuario: </label>
+            <input 
+                type="text"
+                class="form-control"
+                id="usuario"
+                [(ngModel)] = "gestor.usuario"
+                name="usuario"
+                required
+                minlength="3"
+                maxlength="20"
+                placeholder="Escriba su nombre de usuario"
+                #usuario = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)">
+                <div *ngIf="usuario.errors['required']">
+                    Escriba un nombre de usuario por favor
+                </div>
+                <div *ngIf="usuario.errors['minlength']">
+                    Escriba un usuario válido entre 3 y 20 caracteres.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password: </label>
+            <input 
+                type="password"
+                class="form-control"
+                id="password"
+                [(ngModel)] = "gestor.password"
+                name="password"
+                required
+                minlength="3"
+                maxlength="20"
+                placeholder="Escriba su password"
+                #password = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+                <div *ngIf="password.errors['required']">
+                    Escriba una password por favor
+                </div>
+                <div *ngIf="password.errors['minlength']">
+                    Escriba una password válida entre 3 y 20 caracteres.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo: </label>
+            <input 
+                type="email"
+                class="form-control"
+                id="correo"
+                [(ngModel)] = "gestor.correo"
+                name="correo"
+                pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+                required
+                placeholder="Escriba su correo electrónico"
+                #correo = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                <div *ngIf="correo.errors['required']">
+                    Escriba un correo por favor
+                </div>
+                <div *ngIf="correo.errors['pattern']">
+                    Escriba un correo electrónico con un formato válido. Ej: correo@correo.com
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success" [disabled]="!gestorForm.form.valid">Guardar</button>
+        </div>
+    </form>
+</div>

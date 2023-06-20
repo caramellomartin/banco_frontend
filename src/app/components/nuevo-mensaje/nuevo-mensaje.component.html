@@ -1,0 +1,68 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center m-4">Nuevo Mensaje</h3>
+    <form (ngSubmit)="onSubmit()" #mensajeForm = "ngForm">
+        <div class="form-group">
+            <div class="form-group">
+                <label for="texto">Mensaje: </label>
+                <textarea  
+                    rows="4" 
+                    type="text"
+                    class="form-control"
+                    id="texto"
+                    [(ngModel)] = "mensaje.texto"
+                    name="texto"
+                    required
+                    minlength="3"
+                    placeholder="Escriba el mensaje a enviar"
+                    #texto = "ngModel"
+                ></textarea>
+                <div class="alert alert-danger" *ngIf="texto.invalid && (texto.dirty || texto.touched)">
+                    <div *ngIf="texto.errors['required']">
+                        Escriba un mensaje por favor
+                    </div>
+                    <div *ngIf="texto.errors['minlength']">
+                        Escriba un texto con al menos 3 caracteres.
+                    </div>
+                </div>
+            </div>
+            <label for="origen">Id Origen: </label>
+            <input 
+                type="number"
+                class="form-control"
+                id="origen"
+                [(ngModel)] = "mensaje.origen.id"
+                name="ortigen"
+                required
+                placeholder="Escriba el Id del Gestor origen"
+                #origen = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="origen.invalid && (origen.dirty || origen.touched)">
+                <div *ngIf="origen.errors['required']">
+                    Escriba un Id de gestor por favor
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="destino">Id Destino: </label>
+            <input 
+                type="number"
+                class="form-control"
+                id="destino"
+                [(ngModel)] = "mensaje.destino.id"
+                name="destino"
+                required
+                placeholder="Escriba el Id del Gestor destino"
+                #destino = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="destino.invalid && (destino.dirty || destino.touched)">
+                <div *ngIf="destino.errors['required']">
+                    Escriba un Id de Gestor por favor
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <button class="btn btn-success" [disabled]="!mensajeForm.form.valid">Guardar</button>
+        </div>
+    </form>
+</div>

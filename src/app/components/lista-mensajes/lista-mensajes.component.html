@@ -1,0 +1,27 @@
+<h2 class="text-center m-4">Lista de Mensajes</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr class="text-center">
+            <th>Id</th>
+            <th>Mensaje</th>
+            <th>Id Origen</th>
+            <th>Id Destino</th>
+            <th>Fecha</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mensaje of mensajes" class="text-center">
+            <td>{{mensaje.id}}</td>
+            <td>{{mensaje.texto}}</td>
+            <td>{{mensaje.origen.id}}</td>
+            <td>{{mensaje.destino.id}}</td>
+            <td>{{mensaje.fecha}}</td>
+            <td>
+                <button (click)="actualizarMensaje(mensaje.id)" class="btn btn-info">Editar</button>
+                <button (click)="eliminarMensaje(mensaje.id)" class="btn btn-danger ml-2">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
